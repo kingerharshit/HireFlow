@@ -10,7 +10,7 @@
     --coral: 12 88.1% 65.1%;       /* #F47758 */
     --charcoal: 227 9.9% 17.8%;    /* #292B32 */
 
-    /* Semantic Design Tokens */
+    /* Light Theme Semantic Tokens */
     --background: 25 100% 97.6%;   /* Warm Ivory canvas */
     --foreground: 227 10% 17.8%;   /* Charcoal text */
 
@@ -43,33 +43,34 @@
   }
 
   .dark {
-    --background: 227 12% 11%;
-    --foreground: 25 100% 97.6%;
+    /* Dark Theme Semantic Tokens */
+    --background: 227 14% 11%;     /* Deep Charcoal canvas (#17181F) */
+    --foreground: 25 100% 97.6%;   /* Warm Ivory text (#FFF8F3) */
 
-    --card: 227 10% 15%;
+    --card: 227 12% 16%;          /* Elevated Charcoal surface (#22242D) */
     --card-foreground: 25 100% 97.6%;
 
-    --popover: 227 10% 15%;
+    --popover: 227 12% 16%;
     --popover-foreground: 25 100% 97.6%;
 
-    --primary: 12 88.1% 65.1%;
+    --primary: 12 88.1% 65.1%;     /* Coral primary brand accent */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 227 10% 21%;
-    --secondary-foreground: 20 75% 90.6%;
+    --secondary: 227 10% 22%;     /* Elevated secondary button/surface (#30323D) */
+    --secondary-foreground: 20 85% 92%; /* Soft Peach text highlight */
 
-    --muted: 227 10% 20%;
-    --muted-foreground: 24 15% 70%;
+    --muted: 227 10% 20%;         /* Muted surface */
+    --muted-foreground: 227 8% 65%; /* Soft readable muted text (#9FA2B0) */
 
     --accent: 227 10% 22%;
-    --accent-foreground: 20 75% 90.6%;
+    --accent-foreground: 20 85% 92%;
 
-    --destructive: 0 72% 51%;
+    --destructive: 0 74% 56%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 227 10% 23%;
-    --input: 227 10% 23%;
-    --ring: 12 88.1% 65.1%;
+    --border: 227 10% 23%;        /* Subtle dark borders (#323540) */
+    --input: 227 10% 23%;         /* Dark input outline */
+    --ring: 12 88.1% 65.1%;       /* Coral focus halo */
   }
 }
 
@@ -79,7 +80,7 @@
     box-sizing: border-box;
   }
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground font-sans antialiased transition-colors duration-200;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
   #root {
