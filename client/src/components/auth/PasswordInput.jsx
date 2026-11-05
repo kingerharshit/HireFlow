@@ -1,0 +1,37 @@
+import * as React from "react"
+import { Eye, EyeOff } from "lucide-react"
+import { Input } from "@/components/ui/input"
+import { cn } from "@/lib/utils"
+
+const PasswordInput = React.forwardRef(({ className, error, ...props }, ref) => {
+  const [showPassword, setShowPassword] = React.useState(false)
+
+  return (
+    <div className="relative">
+      <Input
+        type={showPassword ? "text" : "password"}
+        className={cn("pr-10", className)}
+        ref={ref}
+        error={error}
+        {...props}
+      />
+      <button
+        type="button"
+        onClick={() => setShowPassword(!showPassword)}
+        className="absolute right-0 top-0 h-full px-3 text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus-visible:text-primary cursor-pointer disabled:pointer-events-none"
+        aria-label={showPassword ? "Hide password" : "Show password"}
+        tabIndex={-1}
+      >
+        {showPassword ? (
+          <EyeOff className="h-4 w-4" />
+        ) : (
+          <Eye className="h-4 w-4" />
+        )}
+      </button>
+    </div>
+  )
+})
+PasswordInput.displayName = "PasswordInput"
+
+export { PasswordInput }
+
