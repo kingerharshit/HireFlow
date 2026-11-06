@@ -17,13 +17,16 @@ import {
 import { JobCard } from "./JobCard"
 import { JobStatusBadge } from "./JobStatusBadge"
 import { DEMO_JOBS } from "@/features/jobs/demoJobsData"
+import { useJobs } from "@/context/JobsContext"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 export function ActiveJobsSection({
-  jobs = DEMO_JOBS,
+  jobs: propsJobs,
   className,
 }) {
+  const { jobs: contextJobs } = useJobs()
+  const jobs = propsJobs || contextJobs
   const [selectedJob, setSelectedJob] = useState(null)
   const [toastMessage, setToastMessage] = useState(null)
   const navigate = useNavigate()
@@ -33,8 +36,7 @@ export function ActiveJobsSection({
   }
 
   const handleEdit = (job) => {
-    setToastMessage(`Edit Requisition simulated for "${job.title}" • Backend forms connect in Milestone 7`)
-    setTimeout(() => setToastMessage(null), 4000)
+    navigate(`/recruiter/jobs/edit/${job.id}`)
   }
 
   const handleViewApplications = (job) => {

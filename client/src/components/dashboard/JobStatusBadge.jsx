@@ -1,5 +1,5 @@
 import * as React from "react"
-import { CheckCircle2, PauseCircle, FileEdit, XCircle } from "lucide-react"
+import { CheckCircle2, PauseCircle, FileEdit, XCircle, Archive } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export function JobStatusBadge({ status = "Published", className }) {
@@ -43,6 +43,20 @@ export function JobStatusBadge({ status = "Published", className }) {
       >
         <FileEdit className="w-3 h-3 text-muted-foreground shrink-0" aria-hidden="true" />
         <span>Draft</span>
+      </span>
+    )
+  }
+
+  if (normalizedStatus === "archived") {
+    return (
+      <span
+        className={cn(
+          "inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-slate-100 dark:bg-slate-800/60 text-slate-700 dark:text-slate-300 border border-slate-300/80 dark:border-slate-700/60 shrink-0",
+          className
+        )}
+      >
+        <Archive className="w-3 h-3 text-slate-500 shrink-0" aria-hidden="true" />
+        <span>Archived</span>
       </span>
     )
   }

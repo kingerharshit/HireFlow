@@ -16,7 +16,14 @@ const ROUTE_LABELS = {
 
 export function Breadcrumbs({ className }) {
   const location = useLocation()
-  const currentTitle = ROUTE_LABELS[location.pathname] || "Workspace"
+  const pathname = location.pathname
+
+  const isEditJob =
+    pathname.startsWith("/recruiter/jobs/edit/") || pathname.match(/^\/recruiter\/jobs\/[^/]+\/edit/)
+
+  const currentTitle = isEditJob
+    ? "Edit Requisition"
+    : ROUTE_LABELS[pathname] || "Workspace"
 
   return (
     <nav
@@ -34,6 +41,19 @@ export function Breadcrumbs({ className }) {
 
       {/* Separator Chevron */}
       <ChevronRight className="w-3.5 h-3.5 text-muted-foreground/40 shrink-0" aria-hidden="true" />
+
+      {/* Intermediate Jobs link if on Edit Job page */}
+      {isEditJob && (
+        <>
+          <Link
+            to="/recruiter/jobs"
+            className="text-muted-foreground hover:text-foreground font-medium transition-colors"
+          >
+            Jobs
+          </Link>
+          <ChevronRight className="w-3.5 h-3.5 text-muted-foreground/40 shrink-0" aria-hidden="true" />
+        </>
+      )}
 
       {/* Current Active Page Title */}
       <span

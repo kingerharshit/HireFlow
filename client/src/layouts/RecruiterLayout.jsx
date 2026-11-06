@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom"
 import { RecruiterSidebar } from "@/components/navigation/RecruiterSidebar"
 import { MobileSidebar } from "@/components/navigation/MobileSidebar"
 import { RecruiterTopbar } from "@/components/navigation/RecruiterTopbar"
+import { JobsProvider } from "@/context/JobsContext"
 import { cn } from "@/lib/utils"
 
 export function RecruiterLayout() {
@@ -11,7 +12,8 @@ export function RecruiterLayout() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <div className="min-h-screen min-h-[100dvh] w-full max-w-full bg-background text-foreground antialiased transition-colors duration-200">
+    <JobsProvider>
+      <div className="min-h-screen min-h-[100dvh] w-full max-w-full bg-background text-foreground antialiased transition-colors duration-200">
       {/* Desktop / Tablet Persistent Fixed Sidebar */}
       <div className="hidden md:block">
         <RecruiterSidebar
@@ -48,5 +50,6 @@ export function RecruiterLayout() {
         </main>
       </div>
     </div>
+  </JobsProvider>
   )
 }

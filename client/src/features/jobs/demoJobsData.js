@@ -1,12 +1,53 @@
 /**
- * HireFlow Recruiter Dashboard - Demonstration Active Job Roles
- * Clearly identified demonstration records for recruitment pipeline preview.
+ * HireFlow Recruiter Workspace - Centralized Demonstration Job Roles
+ * Single source of truth for both the Recruiter Overview Dashboard and the full Job Management module.
  * All records belong to Acme Technologies (org-1) in accordance with multi-tenant SaaS architecture.
  */
+
 export const DEMO_ORGANIZATION = {
   id: "org-1",
   name: "Acme Technologies",
 }
+
+export const JOB_DEPARTMENTS = [
+  "All Departments",
+  "Engineering",
+  "Product Design",
+  "Growth & Strategy",
+  "Platform & Infrastructure",
+]
+
+export const JOB_LOCATIONS = [
+  "All Locations",
+  "Remote — India",
+  "Bangalore, India",
+  "Chandigarh, India",
+  "Pune, India",
+]
+
+export const EMPLOYMENT_TYPES = [
+  "All Types",
+  "Full-time",
+  "Part-time",
+  "Contract",
+  "Internship",
+]
+
+export const WORKPLACE_TYPES = [
+  "All Workplace Types",
+  "Remote",
+  "Hybrid",
+  "On-site",
+]
+
+export const JOB_STATUS_OPTIONS = [
+  "All Statuses",
+  "Published",
+  "Draft",
+  "Paused",
+  "Closed",
+  "Archived",
+]
 
 export const DEMO_JOBS = [
   {
@@ -16,14 +57,28 @@ export const DEMO_JOBS = [
     title: "Senior Frontend Developer",
     department: "Engineering",
     location: "Remote — India",
+    workplaceType: "Remote",
     employmentType: "Full-time",
     status: "Published",
+    candidateVisibility: "Publicly Discoverable",
+    openings: 2,
     applicationsCount: 48,
     targetApplications: 60,
     publishedDate: "Oct 18, 2026",
+    createdDate: "Oct 15, 2026",
+    deadline: "Nov 30, 2026",
     daysRemaining: "12 days left",
+    daysAgo: 19,
+    salaryMin: 2800000,
+    salaryMax: 3800000,
+    currency: "INR",
     salaryRange: "₹28,00,000 - ₹38,00,000",
     experienceLevel: "Senior (5+ yrs)",
+    minExperience: 5,
+    maxExperience: 10,
+    education: "B.Tech/B.E. in Computer Science or equivalent practical experience",
+    skills: ["React 19", "TypeScript", "Tailwind CSS", "Vite", "Web Performance"],
+    preferredSkills: ["Next.js", "Jest", "Microfrontends"],
     pipeline: {
       reviewing: 24,
       interviewing: 16,
@@ -32,6 +87,8 @@ export const DEMO_JOBS = [
     },
     description:
       "Leading frontend architecture for Acme Technologies recruitment platform using React 19, Tailwind CSS, and performance-first distributed state.",
+    responsibilities:
+      "Architect reusable UI component systems; optimize core web vitals and bundle size; collaborate with product designers on accessible micro-interactions; mentor mid-level frontend engineers.",
   },
   {
     id: "job-backend-dev",
@@ -40,14 +97,28 @@ export const DEMO_JOBS = [
     title: "Backend Developer",
     department: "Engineering",
     location: "Bangalore, India",
+    workplaceType: "Hybrid",
     employmentType: "Full-time",
     status: "Published",
+    candidateVisibility: "Publicly Discoverable",
+    openings: 3,
     applicationsCount: 92,
     targetApplications: 100,
     publishedDate: "Oct 24, 2026",
+    createdDate: "Oct 20, 2026",
+    deadline: "Dec 15, 2026",
     daysRemaining: "18 days left",
+    daysAgo: 13,
+    salaryMin: 2400000,
+    salaryMax: 3400000,
+    currency: "INR",
     salaryRange: "₹24,00,000 - ₹34,00,000",
     experienceLevel: "Mid-Senior (4+ yrs)",
+    minExperience: 4,
+    maxExperience: 8,
+    education: "B.Tech/M.Tech in Computer Science, Information Technology or related field",
+    skills: ["Go", "Node.js", "PostgreSQL", "Microservices", "Docker"],
+    preferredSkills: ["Redis", "Kafka", "Kubernetes"],
     pipeline: {
       reviewing: 45,
       interviewing: 32,
@@ -56,6 +127,8 @@ export const DEMO_JOBS = [
     },
     description:
       "Building resilient distributed API services, PostgreSQL schemas, and real-time event streaming for Acme Technologies multi-tenant SaaS workloads.",
+    responsibilities:
+      "Develop high-throughput REST and gRPC microservices; optimize database queries and table partitioning; ensure tenant data isolation across multi-tenant clusters; lead automated unit and integration testing.",
   },
   {
     id: "job-ui-ux-designer",
@@ -64,14 +137,28 @@ export const DEMO_JOBS = [
     title: "UI/UX Designer",
     department: "Product Design",
     location: "Chandigarh, India",
+    workplaceType: "Hybrid",
     employmentType: "Hybrid",
     status: "Paused",
+    candidateVisibility: "Hidden from Candidates",
+    openings: 1,
     applicationsCount: 34,
     targetApplications: 40,
     publishedDate: "Oct 04, 2026",
+    createdDate: "Oct 01, 2026",
+    deadline: "Nov 15, 2026",
     daysRemaining: "Paused by recruiter",
+    daysAgo: 33,
+    salaryMin: 1800000,
+    salaryMax: 2600000,
+    currency: "INR",
     salaryRange: "₹18,00,000 - ₹26,00,000",
     experienceLevel: "Senior (4+ yrs)",
+    minExperience: 4,
+    maxExperience: 7,
+    education: "Degree in Design (B.Des/M.Des), Human-Computer Interaction, or equivalent portfolio",
+    skills: ["Figma", "Design Systems", "Prototyping", "Design Tokens", "User Research"],
+    preferredSkills: ["WCAG 2.1 Accessibility", "Motion Design", "Design Systems Governance"],
     pipeline: {
       reviewing: 18,
       interviewing: 11,
@@ -80,6 +167,8 @@ export const DEMO_JOBS = [
     },
     description:
       "Crafting intuitive recruiter workspaces, design tokens, and candidate application flows using accessible typography and micro-interactions.",
+    responsibilities:
+      "Deliver pixel-perfect Figma UI component libraries; conduct candidate usability tests; establish design tokens with frontend developers; translate complex ATS workflows into frictionless UI journeys.",
   },
   {
     id: "job-product-manager",
@@ -88,14 +177,28 @@ export const DEMO_JOBS = [
     title: "Product Manager",
     department: "Growth & Strategy",
     location: "Remote — India",
+    workplaceType: "Remote",
     employmentType: "Full-time",
     status: "Draft",
+    candidateVisibility: "Internal Recruiter Only",
+    openings: 1,
     applicationsCount: 0,
     targetApplications: 50,
-    publishedDate: "Draft saved Nov 02, 2026",
+    publishedDate: "Not yet published",
+    createdDate: "Nov 02, 2026",
+    deadline: "Dec 31, 2026",
     daysRemaining: "Not yet published",
+    daysAgo: 4,
+    salaryMin: 3000000,
+    salaryMax: 4200000,
+    currency: "INR",
     salaryRange: "₹30,00,000 - ₹42,00,000",
     experienceLevel: "Lead (6+ yrs)",
+    minExperience: 6,
+    maxExperience: 10,
+    education: "Bachelor's degree; MBA or technical degree preferred",
+    skills: ["Product Strategy", "B2B SaaS", "Roadmapping", "PRDs", "Product Analytics"],
+    preferredSkills: ["AI/ML Hiring Algorithms", "SQL", "User Interview Methodologies"],
     pipeline: {
       reviewing: 0,
       interviewing: 0,
@@ -104,5 +207,47 @@ export const DEMO_JOBS = [
     },
     description:
       "Defining roadmap priorities, AI matching algorithms, and enterprise tenant retention metrics across Acme Technologies hiring funnels.",
+    responsibilities:
+      "Synthesize customer telemetry into actionable PRDs; collaborate with ML engineers on AI candidate scoring; define Q1 2027 enterprise ATS roadmap; conduct regular client discovery sessions.",
+  },
+  {
+    id: "job-cloud-infra-lead",
+    organizationId: "org-1",
+    organizationName: "Acme Technologies",
+    title: "Cloud Infrastructure Lead",
+    department: "Platform & Infrastructure",
+    location: "Bangalore, India",
+    workplaceType: "On-site",
+    employmentType: "Full-time",
+    status: "Closed",
+    candidateVisibility: "Applications Closed",
+    openings: 1,
+    applicationsCount: 65,
+    targetApplications: 60,
+    publishedDate: "Aug 15, 2026",
+    createdDate: "Aug 10, 2026",
+    deadline: "Oct 15, 2026",
+    daysRemaining: "Position Filled",
+    daysAgo: 83,
+    salaryMin: 3400000,
+    salaryMax: 4600000,
+    currency: "INR",
+    salaryRange: "₹34,00,000 - ₹46,00,000",
+    experienceLevel: "Lead (7+ yrs)",
+    minExperience: 7,
+    maxExperience: 12,
+    education: "B.Tech in Computer Science or Cloud Systems Architecture certification",
+    skills: ["AWS", "Kubernetes", "Terraform", "CI/CD", "Security Hardening"],
+    preferredSkills: ["SOC2 Compliance", "Observability", "Multi-region Deployments"],
+    pipeline: {
+      reviewing: 30,
+      interviewing: 20,
+      shortlisted: 8,
+      offered: 1,
+    },
+    description:
+      "Led cloud infrastructure modernization, multi-tenant Kubernetes scaling, and automated security scanning for Acme Technologies core services.",
+    responsibilities:
+      "Manage AWS multi-account infrastructure; establish automated Terraform CI/CD pipelines; enforce SOC2 and ISO compliance controls; lead SRE on-call rotations.",
   },
 ]

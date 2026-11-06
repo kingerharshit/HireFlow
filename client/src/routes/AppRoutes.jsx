@@ -8,10 +8,11 @@ import { ResetPasswordPage } from "@/pages/auth/ResetPasswordPage"
 import { VerifyEmailPage } from "@/pages/auth/VerifyEmailPage"
 import { RecruiterLayout } from "@/layouts/RecruiterLayout"
 import { RecruiterOverviewPage } from "@/pages/recruiter/RecruiterOverviewPage"
+import { JobsPage } from "@/pages/recruiter/JobsPage"
+import { EditJobPage } from "@/pages/recruiter/EditJobPage"
 import { ApplicationsPage } from "@/pages/recruiter/ApplicationsPage"
 import { CandidatesPage } from "@/pages/recruiter/CandidatesPage"
 import {
-  RecruiterJobsPage,
   RecruiterInterviewsPage,
   RecruiterAnalyticsPage,
   RecruiterSettingsPage,
@@ -39,7 +40,9 @@ export function AppRoutes() {
       <Route path="/recruiter" element={<RecruiterLayout />}>
         <Route index element={<Navigate to="/recruiter/dashboard" replace />} />
         <Route path="dashboard" element={<RecruiterOverviewPage />} />
-        <Route path="jobs" element={<RecruiterJobsPage />} />
+        <Route path="jobs" element={<JobsPage />} />
+        <Route path="jobs/edit/:jobId" element={<EditJobPage />} />
+        <Route path="jobs/:jobId/edit" element={<EditJobPage />} />
         <Route path="candidates" element={<CandidatesPage />} />
         <Route path="applications" element={<ApplicationsPage />} />
         <Route path="interviews" element={<RecruiterInterviewsPage />} />
