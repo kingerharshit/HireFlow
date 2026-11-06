@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils"
 export function BrandLogo({
   className,
   showTagline = true,
+  showWordmark = true,
   subtitle = "Smarter Hiring. Better Connections.",
   size = "default",
   to = "/auth/login",
@@ -16,15 +17,16 @@ export function BrandLogo({
       to={to}
       aria-label="HireFlow Home"
       className={cn(
-        "inline-flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-xl select-none",
+        "inline-flex items-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-xl select-none shrink-0",
+        showWordmark ? "gap-3" : "justify-center",
         className
       )}
     >
       {/* High-Contrast Custom Logomark */}
       <div
         className={cn(
-          "rounded-xl bg-gradient-to-br from-[#F47758] via-[#EE6543] to-[#D94F2D] text-white flex items-center justify-center font-black tracking-tighter shadow-md shadow-brand-coral/25 border border-white/25 ring-1 ring-black/10 dark:ring-white/20 shrink-0 group-hover:scale-105 transition-all duration-200",
-          isSmall ? "w-8 h-8 text-sm" : "w-10 h-10 text-base"
+          "rounded-xl bg-gradient-to-br from-[#F47758] via-[#EE6543] to-[#D94F2D] text-white flex items-center justify-center font-black tracking-tighter shadow-md shadow-brand-coral/25 border border-white/25 ring-1 ring-black/10 dark:ring-white/20 shrink-0 group-hover:scale-105 transition-transform duration-200",
+          isSmall ? "w-9 h-9 text-sm" : "w-10 h-10 text-base"
         )}
         aria-hidden="true"
       >
@@ -42,25 +44,27 @@ export function BrandLogo({
         </svg>
       </div>
 
-      {/* Brand Wordmark & Tagline */}
-      <div className="leading-none">
-        <div className="flex items-center gap-1">
-          <span
-            className={cn(
-              "font-extrabold tracking-tight text-foreground transition-colors group-hover:text-primary",
-              isSmall ? "text-lg" : "text-xl"
-            )}
-          >
-            HireFlow
-          </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+      {/* Brand Wordmark & Tagline: ONLY rendered if showWordmark is true */}
+      {showWordmark && (
+        <div className="leading-none min-w-0 flex-1 truncate">
+          <div className="flex items-center gap-1">
+            <span
+              className={cn(
+                "font-extrabold tracking-tight text-foreground transition-colors group-hover:text-primary",
+                isSmall ? "text-lg" : "text-xl"
+              )}
+            >
+              HireFlow
+            </span>
+            <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+          </div>
+          {showTagline && (
+            <span className="block text-[11px] text-muted-foreground font-medium pt-1 tracking-tight truncate">
+              {subtitle}
+            </span>
+          )}
         </div>
-        {showTagline && (
-          <span className="block text-[11px] text-muted-foreground font-medium pt-1 tracking-tight">
-            {subtitle}
-          </span>
-        )}
-      </div>
+      )}
     </Link>
   )
 }
