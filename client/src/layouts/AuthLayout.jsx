@@ -1,40 +1,36 @@
 import * as React from "react"
-import { Outlet, Link } from "react-router-dom"
-import { ShieldCheck, Lock, CheckCircle2, Sparkles, TrendingUp } from "lucide-react"
+import { useState } from "react"
+import { Outlet } from "react-router-dom"
+import { ShieldCheck, Lock, CheckCircle2, Sparkles, TrendingUp, Star } from "lucide-react"
+import { BrandLogo } from "@/components/common/BrandLogo"
 import { ThemeToggle } from "@/components/common/ThemeToggle"
 import { Badge } from "@/components/ui/badge"
 
 export function AuthLayout() {
+  const [avatarError, setAvatarError] = useState(false)
+
+  // Curated, ultra-reliable professional candidate portrait
+  const candidateAvatarUrl =
+    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&q=80"
+
   return (
-    <div className="min-h-screen w-full flex flex-col lg:flex-row bg-background text-foreground antialiased selection:bg-brand-peach selection:text-brand-charcoal transition-colors duration-200">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden flex flex-col lg:flex-row bg-background text-foreground antialiased selection:bg-brand-peach selection:text-brand-charcoal transition-colors duration-200">
       {/* ============================================================ */}
       {/* LEFT PANEL: Brand Showcase, Headline & Hiring Intelligence Visual */}
       {/* ============================================================ */}
-      <div className="hidden lg:flex lg:w-[52%] xl:w-[55%] bg-gradient-to-br from-brand-ivory via-background to-[#FBF0E8] dark:from-brand-charcoal dark:via-background dark:to-[#1a1c22] border-r border-border/80 flex-col justify-between p-10 xl:p-14 relative overflow-hidden">
+      <div className="hidden lg:flex lg:w-[52%] xl:w-[55%] bg-gradient-to-br from-brand-ivory via-background to-[#FBF0E8] dark:from-[#1A1C24] dark:via-[#14151C] dark:to-[#171821] border-r border-border/80 dark:border-white/10 flex-col justify-between p-10 xl:p-14 relative overflow-hidden select-none">
         {/* Subtle decorative radial lights */}
         <div className="absolute top-1/4 -left-12 w-80 h-80 bg-brand-peach/40 dark:bg-brand-coral/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-brand-coral/15 dark:bg-brand-coral/5 rounded-full blur-3xl pointer-events-none" />
 
-        {/* Top Brand Lockup */}
+        {/* Top Brand Lockup with High-Contrast Logo */}
         <div className="relative z-10 flex items-center justify-between">
-          <Link
-            to="/auth/login"
-            className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-xl"
-          >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-coral to-[#E25F3E] flex items-center justify-center text-white shadow-soft-sm font-bold text-lg group-hover:scale-105 transition-transform">
-              HF
-            </div>
-            <div>
-              <span className="font-extrabold text-xl tracking-tight text-foreground">
-                HireFlow
-              </span>
-              <span className="block text-[11px] text-muted-foreground font-medium">
-                Smarter Hiring. Better Connections.
-              </span>
-            </div>
-          </Link>
+          <BrandLogo size="default" />
 
-          <Badge variant="secondary" className="text-xs font-semibold gap-1.5 px-3 py-1 bg-card/80 backdrop-blur-sm border-border/80">
+          <Badge
+            variant="secondary"
+            className="text-xs font-semibold gap-1.5 px-3 py-1 bg-card/80 dark:bg-card/60 backdrop-blur-sm border-border/80 dark:border-white/10"
+          >
             <Sparkles className="w-3.5 h-3.5 text-primary" />
             AI Recruitment SaaS
           </Badge>
@@ -53,19 +49,39 @@ export function AuthLayout() {
             </p>
           </div>
 
-          {/* Professional Hiring Visual Card */}
+          {/* Professional Hiring Intelligence Card with Real Avatar */}
           <div className="relative pt-2">
-            <div className="relative rounded-2xl border border-border/90 bg-card/95 dark:bg-card/80 backdrop-blur-md p-5 sm:p-6 shadow-soft-md space-y-4">
+            <div className="relative rounded-2xl border border-border/90 dark:border-white/10 bg-card/95 dark:bg-[#1F212B]/95 backdrop-blur-md p-5 sm:p-6 shadow-soft-md dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)] space-y-4">
               {/* Candidate Card Header */}
               <div className="flex items-start justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-full bg-gradient-to-br from-brand-coral to-brand-peach flex items-center justify-center text-white font-bold text-sm shadow-sm shrink-0">
-                    ER
+                  {/* Avatar Container with Real Portrait & Polished Initials Fallback */}
+                  <div className="relative shrink-0" title="Elena Rostova • Candidate Profile">
+                    {!avatarError ? (
+                      <img
+                        src={candidateAvatarUrl}
+                        alt="Elena Rostova"
+                        loading="eager"
+                        crossOrigin="anonymous"
+                        onError={() => setAvatarError(true)}
+                        className="w-12 h-12 rounded-full object-cover ring-2 ring-primary/30 dark:ring-primary/50 shadow-sm"
+                      />
+                    ) : (
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#F47758] via-[#EE6543] to-[#D94F2D] flex items-center justify-center text-white font-black text-sm tracking-wide shadow-sm ring-2 ring-primary/30 dark:ring-primary/50 border border-white/20 select-none">
+                        ER
+                      </div>
+                    )}
+                    {/* Active Match Status Dot */}
+                    <span
+                      className="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-card dark:border-[#1F212B] ring-1 ring-emerald-600/40 shadow-xs"
+                      title="Available &amp; Active"
+                    />
                   </div>
+
                   <div>
                     <div className="flex items-center gap-2">
                       <h4 className="font-bold text-sm text-foreground">Elena Rostova</h4>
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/40">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200/80 dark:border-emerald-800/40">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                         98% Match
                       </span>
@@ -73,35 +89,40 @@ export function AuthLayout() {
                     <p className="text-xs text-muted-foreground">Staff Frontend Architect • 8 yrs exp</p>
                   </div>
                 </div>
+
+                <div className="flex items-center gap-0.5 text-amber-500 text-xs font-bold">
+                  <Star className="w-3.5 h-3.5 fill-current" />
+                  <span>4.9</span>
+                </div>
               </div>
 
               {/* Skills Tags */}
               <div className="flex flex-wrap gap-1.5">
-                <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-md bg-secondary/80 text-secondary-foreground">
+                <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-md bg-secondary/80 dark:bg-[#2A2C38] text-secondary-foreground dark:text-[#FBE4D8]">
                   React 19
                 </span>
-                <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-md bg-secondary/80 text-secondary-foreground">
+                <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-md bg-secondary/80 dark:bg-[#2A2C38] text-secondary-foreground dark:text-[#FBE4D8]">
                   Design Systems
                 </span>
-                <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-md bg-secondary/80 text-secondary-foreground">
+                <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-md bg-secondary/80 dark:bg-[#2A2C38] text-secondary-foreground dark:text-[#FBE4D8]">
                   TypeScript
                 </span>
-                <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-md bg-secondary/80 text-secondary-foreground">
+                <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-md bg-secondary/80 dark:bg-[#2A2C38] text-secondary-foreground dark:text-[#FBE4D8]">
                   Distributed UI
                 </span>
               </div>
 
               {/* Scorecard metrics bar */}
-              <div className="pt-2 border-t border-border/60 grid grid-cols-3 gap-2 text-center text-xs">
-                <div className="p-2 rounded-lg bg-muted/40">
+              <div className="pt-2 border-t border-border/60 dark:border-white/10 grid grid-cols-3 gap-2 text-center text-xs">
+                <div className="p-2 rounded-lg bg-muted/40 dark:bg-[#181922]">
                   <div className="font-bold text-foreground">9.8 / 10</div>
                   <div className="text-[10px] text-muted-foreground">Architecture</div>
                 </div>
-                <div className="p-2 rounded-lg bg-muted/40">
+                <div className="p-2 rounded-lg bg-muted/40 dark:bg-[#181922]">
                   <div className="font-bold text-foreground">9.6 / 10</div>
                   <div className="text-[10px] text-muted-foreground">Collaboration</div>
                 </div>
-                <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                <div className="p-2 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary">
                   <div className="font-bold">Interview</div>
                   <div className="text-[10px]">Round 3</div>
                 </div>
@@ -109,7 +130,7 @@ export function AuthLayout() {
             </div>
 
             {/* Floating Metric Pill */}
-            <div className="absolute -bottom-3.5 -right-2 sm:-right-4 rounded-xl border border-border/80 bg-card/95 dark:bg-card/90 backdrop-blur-md px-3.5 py-2 shadow-soft-sm flex items-center gap-2.5 text-xs">
+            <div className="absolute -bottom-3.5 -right-2 sm:-right-4 rounded-xl border border-border/80 dark:border-white/10 bg-card/95 dark:bg-[#1F212B]/95 backdrop-blur-md px-3.5 py-2 shadow-soft-sm flex items-center gap-2.5 text-xs">
               <div className="w-7 h-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-bold">
                 <TrendingUp className="w-4 h-4" />
               </div>
@@ -122,7 +143,7 @@ export function AuthLayout() {
         </div>
 
         {/* Bottom Trust Indicators */}
-        <div className="relative z-10 pt-4 border-t border-border/60">
+        <div className="relative z-10 pt-4 border-t border-border/60 dark:border-white/10">
           <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-2">
             Enterprise Trust &amp; Security
           </p>
@@ -141,19 +162,14 @@ export function AuthLayout() {
       </div>
 
       {/* ============================================================ */}
-      {/* RIGHT PANEL: Form Container Area (Linear/Stripe-inspired)  */}
+      {/* RIGHT PANEL: Form Container Area (Responsive & Mobile-safe) */}
       {/* ============================================================ */}
-      <div className="w-full lg:w-[48%] xl:w-[45%] flex flex-col justify-between p-6 sm:p-10 lg:p-12 xl:p-16 min-h-screen bg-card lg:bg-background transition-colors duration-200">
-        {/* Mobile Top Header (hidden on desktop) */}
-        <div className="flex items-center justify-between pb-6 lg:pb-0">
-          <Link to="/auth/login" className="flex items-center gap-2.5 lg:hidden">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-coral to-[#E25F3E] flex items-center justify-center text-white font-bold text-sm shadow-soft-sm">
-              HF
-            </div>
-            <span className="font-extrabold text-lg tracking-tight text-foreground">
-              HireFlow
-            </span>
-          </Link>
+      <div className="w-full lg:w-[48%] xl:w-[45%] flex flex-col justify-between px-4 sm:px-8 lg:px-12 xl:px-16 py-6 sm:py-8 lg:py-12 min-h-screen bg-card lg:bg-background dark:bg-[#14151B] transition-colors duration-200">
+        {/* Mobile Top Header with High-Contrast Logo & Theme Toggle */}
+        <div className="flex items-center justify-between w-full pb-4 sm:pb-6 lg:pb-0">
+          <div className="lg:hidden">
+            <BrandLogo size="sm" showTagline={false} />
+          </div>
 
           {/* Theme Toggle Button (top-right) */}
           <div className="ml-auto">
@@ -161,24 +177,18 @@ export function AuthLayout() {
           </div>
         </div>
 
-        {/* Central Form Container */}
-        <div className="w-full max-w-[390px] mx-auto my-auto py-4">
+        {/* Central Form Container (Fixed width with 100% max-width for zero horizontal scroll) */}
+        <div className="w-full max-w-[380px] sm:max-w-[400px] mx-auto my-auto py-2 sm:py-4">
           <Outlet />
         </div>
 
-        {/* Footer */}
-        <div className="pt-6 text-center text-xs text-muted-foreground flex flex-col sm:flex-row items-center justify-between gap-2 border-t border-border/40">
+        {/* Mobile-Safe Footer */}
+        <div className="pt-6 text-center text-xs text-muted-foreground flex flex-col sm:flex-row items-center justify-between gap-2 border-t border-border/40 dark:border-white/10 w-full">
           <span>&copy; {new Date().getFullYear()} HireFlow Inc.</span>
-          <div className="flex items-center gap-3">
-            <Link to="#" className="hover:text-foreground transition-colors">
-              Privacy
-            </Link>
-            <Link to="#" className="hover:text-foreground transition-colors">
-              Terms
-            </Link>
-            <Link to="#" className="hover:text-foreground transition-colors">
-              Security
-            </Link>
+          <div className="flex items-center gap-4">
+            <span className="hover:text-foreground transition-colors cursor-pointer">Privacy</span>
+            <span className="hover:text-foreground transition-colors cursor-pointer">Terms</span>
+            <span className="hover:text-foreground transition-colors cursor-pointer">Security</span>
           </div>
         </div>
       </div>

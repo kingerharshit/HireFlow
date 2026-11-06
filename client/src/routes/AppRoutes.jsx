@@ -6,6 +6,16 @@ import { RegisterPage } from "@/pages/auth/RegisterPage"
 import { ForgotPasswordPage } from "@/pages/auth/ForgotPasswordPage"
 import { ResetPasswordPage } from "@/pages/auth/ResetPasswordPage"
 import { VerifyEmailPage } from "@/pages/auth/VerifyEmailPage"
+import { RecruiterLayout } from "@/layouts/RecruiterLayout"
+import {
+  RecruiterDashboardPage,
+  RecruiterJobsPage,
+  RecruiterCandidatesPage,
+  RecruiterApplicationsPage,
+  RecruiterInterviewsPage,
+  RecruiterAnalyticsPage,
+  RecruiterSettingsPage,
+} from "@/pages/recruiter/RecruiterPlaceholderPage"
 import { NotFoundPage } from "@/pages/NotFoundPage"
 import App from "@/App"
 
@@ -23,6 +33,18 @@ export function AppRoutes() {
         <Route path="forgot-password" element={<ForgotPasswordPage />} />
         <Route path="reset-password" element={<ResetPasswordPage />} />
         <Route path="verify-email" element={<VerifyEmailPage />} />
+      </Route>
+
+      {/* Recruiter Workspace Shell wrapped in RecruiterLayout */}
+      <Route path="/recruiter" element={<RecruiterLayout />}>
+        <Route index element={<Navigate to="/recruiter/dashboard" replace />} />
+        <Route path="dashboard" element={<RecruiterDashboardPage />} />
+        <Route path="jobs" element={<RecruiterJobsPage />} />
+        <Route path="candidates" element={<RecruiterCandidatesPage />} />
+        <Route path="applications" element={<RecruiterApplicationsPage />} />
+        <Route path="interviews" element={<RecruiterInterviewsPage />} />
+        <Route path="analytics" element={<RecruiterAnalyticsPage />} />
+        <Route path="settings" element={<RecruiterSettingsPage />} />
       </Route>
 
       {/* Preserved Design System Reference */}

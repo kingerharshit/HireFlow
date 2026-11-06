@@ -43,34 +43,34 @@
   }
 
   .dark {
-    /* Dark Theme Semantic Tokens */
-    --background: 227 14% 11%;     /* Deep Charcoal canvas (#17181F) */
-    --foreground: 25 100% 97.6%;   /* Warm Ivory text (#FFF8F3) */
+    /* Refined High-Contrast Dark Theme Semantic Tokens */
+    --background: 227 15% 9.5%;    /* Velvety Deep Charcoal canvas (#14151B) */
+    --foreground: 25 100% 97.6%;   /* Warm Ivory text (#FFF8F3) - 14:1 contrast */
 
-    --card: 227 12% 16%;          /* Elevated Charcoal surface (#22242D) */
+    --card: 227 13% 14.5%;         /* Elevated Charcoal surface (#1F212B) */
     --card-foreground: 25 100% 97.6%;
 
-    --popover: 227 12% 16%;
+    --popover: 227 13% 14.5%;
     --popover-foreground: 25 100% 97.6%;
 
-    --primary: 12 88.1% 65.1%;     /* Coral primary brand accent */
+    --primary: 12 90% 64%;         /* Luminous Coral accent (#F57353) */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 227 10% 22%;     /* Elevated secondary button/surface (#30323D) */
-    --secondary-foreground: 20 85% 92%; /* Soft Peach text highlight */
+    --secondary: 227 12% 19%;     /* Rich elevated secondary surface (#2A2C38) */
+    --secondary-foreground: 20 90% 92%; /* Warm Peach text highlight */
 
-    --muted: 227 10% 20%;         /* Muted surface */
-    --muted-foreground: 227 8% 65%; /* Soft readable muted text (#9FA2B0) */
+    --muted: 227 12% 18%;         /* Dark muted surface */
+    --muted-foreground: 227 10% 68%; /* Clear, readable text (#A6A9B8) - 6.5:1 contrast */
 
-    --accent: 227 10% 22%;
-    --accent-foreground: 20 85% 92%;
+    --accent: 227 12% 20%;
+    --accent-foreground: 20 90% 92%;
 
-    --destructive: 0 74% 56%;
+    --destructive: 0 76% 58%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 227 10% 23%;        /* Subtle dark borders (#323540) */
-    --input: 227 10% 23%;         /* Dark input outline */
-    --ring: 12 88.1% 65.1%;       /* Coral focus halo */
+    --border: 227 10% 21%;        /* Crisp, subtle dark borders (#2F323F) */
+    --input: 227 10% 22%;         /* Distinct input boundary (#313442) */
+    --ring: 12 90% 64%;           /* Coral focus ring */
   }
 }
 
@@ -79,11 +79,19 @@
     @apply border-border;
     box-sizing: border-box;
   }
+  html,
+  body {
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+  }
   body {
     @apply bg-background text-foreground font-sans antialiased transition-colors duration-200;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
   #root {
     min-height: 100vh;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 }

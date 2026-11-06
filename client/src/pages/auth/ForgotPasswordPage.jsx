@@ -1,13 +1,14 @@
 import * as React from "react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import { ArrowLeft, Mail, AlertCircle, CheckCircle2 } from "lucide-react"
+import { ArrowLeft, Mail, AlertCircle, CheckCircle2, Loader2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
 export function ForgotPasswordPage() {
   const [email, setEmail] = useState("")
   const [error, setError] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   const validate = () => {
@@ -25,9 +26,13 @@ export function ForgotPasswordPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (validate()) {
+    if (!validate()) return
+
+    setIsLoading(true)
+    setTimeout(() => {
+      setIsLoading(false)
       setIsSubmitted(true)
-    }
+    }, 700)
   }
 
   return (
@@ -46,8 +51,8 @@ export function ForgotPasswordPage() {
 
       {isSubmitted ? (
         <div className="space-y-6 animate-in fade-in-50 duration-200">
-          <div className="p-5 rounded-2xl bg-secondary/50 border border-border/80 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center shadow-soft-sm">
+          <div className="p-5 sm:p-6 rounded-2xl bg-secondary/60 dark:bg-[#181922] border border-border/80 dark:border-white/10 space-y-3.5 shadow-soft-sm">
+            <div className="w-11 h-11 rounded-xl bg-primary text-primary-foreground flex items-center justify-center shadow-soft-sm">
               <Mail className="w-5 h-5" />
             </div>
             <div className="space-y-1">
@@ -106,6 +111,7 @@ export function ForgotPasswordPage() {
               autoComplete="email"
               placeholder="you@company.com"
               value={email}
+              disabled={isLoading}
               onChange={(e) => {
                 setEmail(e.target.value)
                 if (error) setError(null)
@@ -127,9 +133,17 @@ export function ForgotPasswordPage() {
           <Button
             type="submit"
             variant="default"
+            disabled={isLoading}
             className="w-full h-11 text-sm font-semibold rounded-lg shadow-soft-sm hover:shadow transition-all mt-2"
           >
-            Send recovery link
+            {isLoading ? (
+              <>
+                <Loader2 className="w-4 h-4 animate-spin mr-2" />
+                <span>Sending recovery link...</span>
+              </>
+            ) : (
+              <span>Send recovery link</span>
+            )}
           </Button>
 
           <div className="text-center pt-3">

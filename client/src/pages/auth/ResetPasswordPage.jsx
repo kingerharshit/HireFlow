@@ -1,7 +1,7 @@
 import * as React from "react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import { CheckCircle2, ArrowRight, AlertCircle } from "lucide-react"
+import { CheckCircle2, ArrowRight, AlertCircle, Loader2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { PasswordInput } from "@/components/auth/PasswordInput"
 import { PasswordStrengthIndicator } from "@/components/auth/PasswordStrengthIndicator"
@@ -12,6 +12,7 @@ export function ResetPasswordPage() {
     confirmPassword: "",
   })
   const [errors, setErrors] = useState({})
+  const [isLoading, setIsLoading] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
 
   const validate = () => {
@@ -35,9 +36,13 @@ export function ResetPasswordPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (validate()) {
+    if (!validate()) return
+
+    setIsLoading(true)
+    setTimeout(() => {
+      setIsLoading(false)
       setIsSuccess(true)
-    }
+    }, 700)
   }
 
   return (
@@ -56,9 +61,9 @@ export function ResetPasswordPage() {
 
       {isSuccess ? (
         <div className="space-y-6 animate-in fade-in-50 duration-200">
-          <div className="p-5 rounded-2xl bg-secondary/50 border border-border/80 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shadow-soft-sm">
-              <CheckCircle2 className="w-5 h-5 stroke-[2.5]" />
+          <div className="p-5 sm:p-6 rounded-2xl bg-secondary/60 dark:bg-[#181922] border border-border/80 dark:border-white/10 space-y-3.5 shadow-soft-sm">
+            <div className="w-11 h-11 rounded-xl bg-emerald-600 text-white flex items-center justify-center shadow-soft-sm">
+              <CheckCircle2 className="w-6 h-6 stroke-[2.5]" />
             </div>
             <div className="space-y-1">
               <h3 className="font-bold text-sm text-foreground">
@@ -96,6 +101,7 @@ export function ResetPasswordPage() {
               autoComplete="new-password"
               placeholder="At least 8 characters"
               value={formData.newPassword}
+              disabled={isLoading}
               onChange={(e) => {
                 setFormData({ ...formData, newPassword: e.target.value })
                 if (errors.newPassword) setErrors({ ...errors, newPassword: null })
@@ -127,6 +133,7 @@ export function ResetPasswordPage() {
               autoComplete="new-password"
               placeholder="Re-enter your new password"
               value={formData.confirmPassword}
+              disabled={isLoading}
               onChange={(e) => {
                 setFormData({ ...formData, confirmPassword: e.target.value })
                 if (errors.confirmPassword) setErrors({ ...errors, confirmPassword: null })
@@ -145,9 +152,17 @@ export function ResetPasswordPage() {
           <Button
             type="submit"
             variant="default"
+            disabled={isLoading}
             className="w-full h-11 text-sm font-semibold rounded-lg shadow-soft-sm hover:shadow transition-all mt-3"
           >
-            Update password
+            {isLoading ? (
+              <>
+                <Loader2 className="w-4 h-4 animate-spin mr-2" />
+                <span>Updating password...</span>
+              </>
+            ) : (
+              <span>Update password</span>
+            )}
           </Button>
 
           <div className="text-center pt-2">

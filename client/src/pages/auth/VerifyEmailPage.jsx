@@ -37,7 +37,7 @@ export function VerifyEmailPage() {
       </div>
 
       {/* Verification Card */}
-      <div className="p-5 rounded-2xl bg-secondary/50 border border-border/80 space-y-4">
+      <div className="p-5 sm:p-6 rounded-2xl bg-secondary/60 dark:bg-[#181922] border border-border/80 dark:border-white/10 space-y-4 shadow-soft-sm">
         <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-brand-coral to-[#E25F3E] text-white flex items-center justify-center shadow-soft-sm">
           <MailCheck className="w-6 h-6" />
         </div>

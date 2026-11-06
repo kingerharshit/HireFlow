@@ -9,7 +9,7 @@ export function AccountTypeSelector({ value, onChange, className }) {
         Account Type
       </label>
       <div
-        className="grid grid-cols-2 p-1 rounded-xl bg-muted/60 border border-border/80 text-center"
+        className="grid grid-cols-2 p-1 rounded-xl bg-muted/60 dark:bg-[#181922] border border-border/80 dark:border-white/10 text-center"
         role="group"
         aria-label="Select Account Type"
       >
@@ -17,30 +17,30 @@ export function AccountTypeSelector({ value, onChange, className }) {
           type="button"
           onClick={() => onChange("candidate")}
           className={cn(
-            "flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-semibold transition-all duration-150 cursor-pointer select-none",
+            "flex items-center justify-center gap-2 py-2 px-2 sm:px-3 rounded-lg text-xs font-semibold transition-all duration-150 cursor-pointer select-none min-w-0",
             value === "candidate"
-              ? "bg-card text-foreground shadow-soft-sm font-bold"
-              : "text-muted-foreground hover:text-foreground hover:bg-card/40"
+              ? "bg-card dark:bg-[#252836] text-foreground dark:text-white shadow-soft-sm font-bold"
+              : "text-muted-foreground hover:text-foreground hover:bg-card/40 dark:hover:bg-white/5"
           )}
           aria-pressed={value === "candidate"}
         >
-          <User className="w-3.5 h-3.5" />
-          <span>Candidate</span>
+          <User className="w-3.5 h-3.5 shrink-0" />
+          <span className="truncate">Candidate</span>
         </button>
 
         <button
           type="button"
           onClick={() => onChange("recruiter")}
           className={cn(
-            "flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-semibold transition-all duration-150 cursor-pointer select-none",
+            "flex items-center justify-center gap-2 py-2 px-2 sm:px-3 rounded-lg text-xs font-semibold transition-all duration-150 cursor-pointer select-none min-w-0",
             value === "recruiter"
-              ? "bg-card text-foreground shadow-soft-sm font-bold"
-              : "text-muted-foreground hover:text-foreground hover:bg-card/40"
+              ? "bg-card dark:bg-[#252836] text-foreground dark:text-white shadow-soft-sm font-bold"
+              : "text-muted-foreground hover:text-foreground hover:bg-card/40 dark:hover:bg-white/5"
           )}
           aria-pressed={value === "recruiter"}
         >
-          <Building2 className="w-3.5 h-3.5" />
-          <span>Recruiter / Org</span>
+          <Building2 className="w-3.5 h-3.5 shrink-0" />
+          <span className="truncate">Recruiter / Org</span>
         </button>
       </div>
       <p className="text-[11px] text-muted-foreground">
