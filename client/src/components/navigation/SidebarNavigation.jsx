@@ -53,7 +53,7 @@ const PREFERENCES_ITEMS = [
 
 export function SidebarNavigation({ isCollapsed = false, onItemClick }) {
   return (
-    <nav className="flex-1 space-y-6 overflow-y-auto px-3 py-2 scrollbar-none select-none">
+    <nav className="flex-1 min-h-0 space-y-6 overflow-y-auto px-3 py-2 scrollbar-none select-none">
       {/* Workspace Section */}
       <div className="space-y-1">
         {!isCollapsed ? (

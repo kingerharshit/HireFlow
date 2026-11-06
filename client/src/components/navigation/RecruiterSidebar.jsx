@@ -13,7 +13,7 @@ export function RecruiterSidebar({
   return (
     <aside
       className={cn(
-        "h-screen sticky top-0 flex flex-col bg-card border-r border-border/80 dark:border-white/10 z-30 transition-[width] duration-300 ease-in-out select-none overflow-x-hidden",
+        "fixed inset-y-0 left-0 top-0 h-screen h-[100dvh] flex flex-col bg-card border-r border-border/80 dark:border-white/10 z-30 transition-[width] duration-300 ease-in-out select-none overflow-hidden",
         isCollapsed ? "w-20" : "w-64",
         className
       )}
@@ -62,10 +62,10 @@ export function RecruiterSidebar({
         </div>
       )}
 
-      {/* Middle Scrollable Navigation */}
+      {/* Middle Scrollable Navigation (Scrolls internally only if height is exceeded) */}
       <SidebarNavigation isCollapsed={isCollapsed} />
 
-      {/* Bottom Profile & Organization Card */}
+      {/* Bottom Profile & Organization Card (Permanently anchored at bottom) */}
       <SidebarProfile isCollapsed={isCollapsed} />
     </aside>
   )

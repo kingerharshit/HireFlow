@@ -15,8 +15,8 @@ export function StatsSection({
 
   return (
     <section className={cn("space-y-4 select-none", className)} aria-label="Recruiter Statistics">
-      {/* Section Subheader & UI State Tester Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+      {/* Section Subheader */}
+      <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-2">
           <h2 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
             Key Metrics
@@ -24,30 +24,6 @@ export function StatsSection({
           <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
             Demonstration Data
           </span>
-        </div>
-
-        {/* State Switching Controls (Allows instant verification of all 4 states) */}
-        <div className="flex items-center gap-1.5 self-start sm:self-auto text-xs">
-          <span className="text-[11px] text-muted-foreground font-medium hidden md:inline">
-            Preview State:
-          </span>
-          <div className="flex items-center p-0.5 rounded-lg bg-muted/60 dark:bg-white/5 border border-border/70 text-[11px]">
-            {["normal", "loading", "empty", "error"].map((s) => (
-              <button
-                key={s}
-                type="button"
-                onClick={() => setUiState(s)}
-                className={cn(
-                  "px-2 py-0.5 rounded-md font-semibold capitalize transition-all cursor-pointer",
-                  uiState === s
-                    ? "bg-card text-foreground shadow-xs font-bold"
-                    : "text-muted-foreground hover:text-foreground"
-                )}
-              >
-                {s}
-              </button>
-            ))}
-          </div>
         </div>
       </div>
 

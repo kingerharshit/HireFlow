@@ -8,7 +8,7 @@ export function SidebarProfile({ isCollapsed = false }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <div className="relative border-t border-border/80 dark:border-white/10 p-3 select-none">
+    <div className="relative border-t border-border/80 dark:border-white/10 p-3 select-none shrink-0 mt-auto bg-card">
       {/* Dropdown Menu Popup (Interactive Placeholder) */}
       {menuOpen && (
         <div

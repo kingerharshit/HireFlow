@@ -17,7 +17,7 @@ export function RecruiterTopbar({
   return (
     <header
       className={cn(
-        "h-16 sticky top-0 z-20 flex items-center justify-between border-b border-border/80 dark:border-white/10 bg-card/85 dark:bg-[#14151B]/85 backdrop-blur-md px-3 sm:px-5 lg:px-6 select-none transition-colors duration-200",
+        "h-16 shrink-0 sticky top-0 z-20 flex items-center justify-between border-b border-border/80 dark:border-white/10 bg-card/85 dark:bg-[#14151B]/85 backdrop-blur-md px-3 sm:px-5 lg:px-6 select-none transition-colors duration-200",
         className
       )}
       aria-label="Recruiter Top Navigation"
