@@ -7,8 +7,8 @@ import { ForgotPasswordPage } from "@/pages/auth/ForgotPasswordPage"
 import { ResetPasswordPage } from "@/pages/auth/ResetPasswordPage"
 import { VerifyEmailPage } from "@/pages/auth/VerifyEmailPage"
 import { RecruiterLayout } from "@/layouts/RecruiterLayout"
+import { RecruiterOverviewPage } from "@/pages/recruiter/RecruiterOverviewPage"
 import {
-  RecruiterDashboardPage,
   RecruiterJobsPage,
   RecruiterCandidatesPage,
   RecruiterApplicationsPage,
@@ -38,7 +38,7 @@ export function AppRoutes() {
       {/* Recruiter Workspace Shell wrapped in RecruiterLayout */}
       <Route path="/recruiter" element={<RecruiterLayout />}>
         <Route index element={<Navigate to="/recruiter/dashboard" replace />} />
-        <Route path="dashboard" element={<RecruiterDashboardPage />} />
+        <Route path="dashboard" element={<RecruiterOverviewPage />} />
         <Route path="jobs" element={<RecruiterJobsPage />} />
         <Route path="candidates" element={<RecruiterCandidatesPage />} />
         <Route path="applications" element={<RecruiterApplicationsPage />} />
