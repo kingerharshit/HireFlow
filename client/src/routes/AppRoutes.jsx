@@ -14,9 +14,7 @@ import { ApplicationsPage } from "@/pages/recruiter/ApplicationsPage"
 import { CandidatesPage } from "@/pages/recruiter/CandidatesPage"
 import { InterviewsPage } from "@/pages/recruiter/InterviewsPage"
 import { AnalyticsPage } from "@/pages/recruiter/AnalyticsPage"
-import {
-  RecruiterSettingsPage,
-} from "@/pages/recruiter/RecruiterPlaceholderPage"
+import { SettingsPage } from "@/pages/recruiter/SettingsPage"
 import { PublicJobDetailsPage } from "@/pages/candidate/PublicJobDetailsPage"
 import { NotFoundPage } from "@/pages/NotFoundPage"
 import App from "@/App"
@@ -48,7 +46,7 @@ export function AppRoutes() {
         <Route path="applications" element={<ApplicationsPage />} />
         <Route path="interviews" element={<InterviewsPage />} />
         <Route path="analytics" element={<AnalyticsPage />} />
-        <Route path="settings" element={<RecruiterSettingsPage />} />
+        <Route path="settings" element={<SettingsPage />} />
       </Route>
 
       {/* Candidate-facing Public Job Details Experience */}
