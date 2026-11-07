@@ -13,8 +13,8 @@ import { EditJobPage } from "@/pages/recruiter/EditJobPage"
 import { ApplicationsPage } from "@/pages/recruiter/ApplicationsPage"
 import { CandidatesPage } from "@/pages/recruiter/CandidatesPage"
 import { InterviewsPage } from "@/pages/recruiter/InterviewsPage"
+import { AnalyticsPage } from "@/pages/recruiter/AnalyticsPage"
 import {
-  RecruiterAnalyticsPage,
   RecruiterSettingsPage,
 } from "@/pages/recruiter/RecruiterPlaceholderPage"
 import { PublicJobDetailsPage } from "@/pages/candidate/PublicJobDetailsPage"
@@ -47,7 +47,7 @@ export function AppRoutes() {
         <Route path="candidates" element={<CandidatesPage />} />
         <Route path="applications" element={<ApplicationsPage />} />
         <Route path="interviews" element={<InterviewsPage />} />
-        <Route path="analytics" element={<RecruiterAnalyticsPage />} />
+        <Route path="analytics" element={<AnalyticsPage />} />
         <Route path="settings" element={<RecruiterSettingsPage />} />
       </Route>
 
