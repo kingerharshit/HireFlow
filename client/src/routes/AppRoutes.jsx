@@ -17,6 +17,7 @@ import {
   RecruiterAnalyticsPage,
   RecruiterSettingsPage,
 } from "@/pages/recruiter/RecruiterPlaceholderPage"
+import { PublicJobDetailsPage } from "@/pages/candidate/PublicJobDetailsPage"
 import { NotFoundPage } from "@/pages/NotFoundPage"
 import App from "@/App"
 
@@ -49,6 +50,9 @@ export function AppRoutes() {
         <Route path="analytics" element={<RecruiterAnalyticsPage />} />
         <Route path="settings" element={<RecruiterSettingsPage />} />
       </Route>
+
+      {/* Candidate-facing Public Job Details Experience */}
+      <Route path="/jobs/:jobId" element={<PublicJobDetailsPage />} />
 
       {/* Preserved Design System Reference */}
       <Route path="/design-system" element={<App />} />

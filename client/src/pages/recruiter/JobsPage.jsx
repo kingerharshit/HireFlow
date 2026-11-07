@@ -31,6 +31,7 @@ import {
   XCircle,
   Archive,
   FileEdit,
+  ExternalLink,
   Users,
   Coins,
   GraduationCap,
@@ -908,6 +909,18 @@ export function JobsPage() {
                                   type="button"
                                   onClick={() => {
                                     setActiveMenuId(null)
+                                    window.open(`/jobs/${job.id}?preview=true`, '_blank')
+                                  }}
+                                  className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs font-medium text-foreground hover:bg-muted/70 transition-colors cursor-pointer"
+                                >
+                                  <ExternalLink className="w-3.5 h-3.5 text-primary" />
+                                  <span>Preview as Candidate</span>
+                                </button>
+
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setActiveMenuId(null)
                                     navigate(`/recruiter/jobs/edit/${job.id}`)
                                   }}
                                   className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs font-medium text-foreground hover:bg-muted/70 transition-colors cursor-pointer"
@@ -1374,7 +1387,7 @@ export function JobsPage() {
             </div>
 
             {/* Footer */}
-            <div className="p-4 bg-muted/30 dark:bg-white/5 border-t border-border/70 flex items-center justify-between gap-2.5">
+            <div className="p-4 bg-muted/30 dark:bg-white/5 border-t border-border/70 flex flex-wrap items-center justify-between gap-2.5">
               <Button
                 type="button"
                 variant="outline"
@@ -1385,7 +1398,21 @@ export function JobsPage() {
                 Close View
               </Button>
 
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    const j = selectedJobForView
+                    window.open(`/jobs/${j.id}?preview=true`, '_blank')
+                  }}
+                  className="text-xs font-semibold rounded-xl border-primary/30 text-primary hover:bg-primary/10"
+                >
+                  <ExternalLink className="w-3.5 h-3.5 mr-1" />
+                  <span>Preview as Candidate</span>
+                </Button>
+
                 <Button
                   type="button"
                   variant="outline"

@@ -12,8 +12,7 @@ export function RecruiterLayout() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <JobsProvider>
-      <div className="min-h-screen min-h-[100dvh] w-full max-w-full bg-background text-foreground antialiased transition-colors duration-200">
+    <div className="min-h-screen min-h-[100dvh] w-full max-w-full bg-background text-foreground antialiased transition-colors duration-200">
       {/* Desktop / Tablet Persistent Fixed Sidebar */}
       <div className="hidden md:block">
         <RecruiterSidebar
@@ -50,6 +49,5 @@ export function RecruiterLayout() {
         </main>
       </div>
     </div>
-  </JobsProvider>
   )
 }

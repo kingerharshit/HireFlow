@@ -20,6 +20,7 @@ import {
   Archive,
   Layers,
   MapPin,
+  ExternalLink,
 } from "lucide-react"
 import { JobStatusBadge } from "@/components/dashboard/JobStatusBadge"
 import {
@@ -278,7 +279,18 @@ export function EditJobPage() {
         </div>
 
         {/* Quick Save/Cancel Top Controls */}
-        <div className="flex items-center gap-2 self-start sm:self-auto shrink-0">
+        <div className="flex items-center gap-2 self-start sm:self-auto shrink-0 flex-wrap">
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={() => window.open(`/jobs/${existingJob.id}?preview=true`, '_blank')}
+            className="h-9 px-3.5 text-xs font-semibold rounded-xl border-primary/30 text-primary hover:bg-primary/10"
+          >
+            <ExternalLink className="w-3.5 h-3.5 mr-1.5" />
+            <span>Preview as Candidate</span>
+          </Button>
+
           <Button
             type="button"
             variant="outline"
