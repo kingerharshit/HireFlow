@@ -12,8 +12,8 @@ import { JobsPage } from "@/pages/recruiter/JobsPage"
 import { EditJobPage } from "@/pages/recruiter/EditJobPage"
 import { ApplicationsPage } from "@/pages/recruiter/ApplicationsPage"
 import { CandidatesPage } from "@/pages/recruiter/CandidatesPage"
+import { InterviewsPage } from "@/pages/recruiter/InterviewsPage"
 import {
-  RecruiterInterviewsPage,
   RecruiterAnalyticsPage,
   RecruiterSettingsPage,
 } from "@/pages/recruiter/RecruiterPlaceholderPage"
@@ -46,7 +46,7 @@ export function AppRoutes() {
         <Route path="jobs/:jobId/edit" element={<EditJobPage />} />
         <Route path="candidates" element={<CandidatesPage />} />
         <Route path="applications" element={<ApplicationsPage />} />
-        <Route path="interviews" element={<RecruiterInterviewsPage />} />
+        <Route path="interviews" element={<InterviewsPage />} />
         <Route path="analytics" element={<RecruiterAnalyticsPage />} />
         <Route path="settings" element={<RecruiterSettingsPage />} />
       </Route>

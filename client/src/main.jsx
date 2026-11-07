@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import './styles/globals.css'
 import { ThemeProvider } from './context/ThemeContext.jsx'
 import { JobsProvider } from './context/JobsContext.jsx'
+import { InterviewsProvider } from './context/InterviewsContext.jsx'
 import { AppRoutes } from './routes/AppRoutes.jsx'
 
 createRoot(document.getElementById('root')).render(
@@ -11,7 +12,9 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <ThemeProvider>
         <JobsProvider>
-          <AppRoutes />
+          <InterviewsProvider>
+            <AppRoutes />
+          </InterviewsProvider>
         </JobsProvider>
       </ThemeProvider>
     </BrowserRouter>

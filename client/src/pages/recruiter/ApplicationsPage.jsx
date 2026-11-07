@@ -42,12 +42,15 @@ import {
   DATE_RANGE_OPTIONS,
   AI_SCORE_OPTIONS,
 } from "@/features/applications/demoApplicationsData"
+import { useInterviews } from "@/context/InterviewsContext"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 
 export function ApplicationsPage() {
+  const { scheduleInterview } = useInterviews()
+
   // Primary application dataset in local component state to support live demonstration interactions
   const [applications, setApplications] = useState(DEMO_APPLICATIONS)
 
@@ -240,6 +243,30 @@ export function ApplicationsPage() {
   const handleConfirmInterview = () => {
     if (candidateToInterview) {
       updateCandidateStatus(candidateToInterview.id, "Interview")
+      if (scheduleInterview) {
+        const startH = interviewForm.time.split(":")[0] || "10"
+        const startM = interviewForm.time.split(":")[1] || "00"
+        const endH = String(Math.min(23, Number(startH) + 1)).padStart(2, "0")
+        scheduleInterview({
+          applicationId: candidateToInterview.id,
+          candidateId: candidateToInterview.candidateId,
+          candidateName: candidateToInterview.candidateName,
+          candidateEmail: candidateToInterview.candidateEmail,
+          candidateLocation: candidateToInterview.candidateLocation,
+          candidateAvatar: candidateToInterview.candidateAvatar,
+          candidateAvatarGradient: candidateToInterview.candidateAvatarGradient,
+          jobId: candidateToInterview.jobId,
+          jobTitle: candidateToInterview.jobTitle,
+          jobDepartment: candidateToInterview.jobDepartment,
+          round: interviewForm.type || "Technical Architecture Review",
+          interviewType: "Online",
+          date: interviewForm.date,
+          startTime: interviewForm.time,
+          endTime: `${endH}:${startM}`,
+          interviewerName: "Priya Sharma",
+          notes: interviewForm.notes,
+        })
+      }
       showToast(
         `Interview scheduled for ${candidateToInterview.candidateName} on ${interviewForm.date} at ${interviewForm.time}`
       )
